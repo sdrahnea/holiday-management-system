@@ -24,10 +24,18 @@ public class HolidayController {
         this.holidayService = holidayService;
     }
 
-    @GetMapping(value = "is-holiday/{documentId}")
+    @GetMapping(value = "is-holiday/{date}")
     @ApiOperation("")
-    public @ResponseBody String isHoliday(@PathVariable String documentId) {
-        log.info("Receive request to download document id: {}", documentId);
+    public @ResponseBody String isHoliday(@PathVariable String date) {
+        log.info("Receive is-holiday request: {}", date);
+
+        return "null";
+    }
+
+    @GetMapping(value = "is-week-end/{date}")
+    @ApiOperation("")
+    public @ResponseBody String isWeekEnd(@PathVariable String date) {
+        log.info("Receive is-week-end request: {}", date);
 
         return "null";
     }

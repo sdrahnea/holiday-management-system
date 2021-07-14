@@ -1,5 +1,6 @@
 package com.hms.controller;
 
+import com.hms.model.HolidayEntity;
 import com.hms.service.HolidayService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -8,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -33,11 +38,22 @@ public class HolidayController {
     }
 
     @GetMapping(value = "is-week-end/{date}")
-    @ApiOperation("")
-    public @ResponseBody String isWeekEnd(@PathVariable String date) {
+    @ApiOperation("Check is the date is week-end or not")
+    public @ResponseBody Boolean isWeekEnd(@PathVariable Date date) {
         log.info("Receive is-week-end request: {}", date);
 
-        return "null";
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        return calendar.get(Calendar.DAY_OF_WEEK) < 5;
+    }
+
+    @GetMapping(value = "holidays/{tenant}")
+    @ApiOperation("Return all holidays per tenant")
+    public @ResponseBody List<HolidayEntity> getAllList(@PathVariable String tenant) {
+        log.info("Return all holidays per tenant: {}", tenant);
+
+        return null;
     }
 
 }

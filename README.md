@@ -1,6 +1,6 @@
 # Holiday Management System
 
-Holiday Management System is a system which storage the holidays based on tenant.
+Holiday Management System is a system which storage the holidays based on tenant. This is like data utility as service approach.
 
 ## Summary
 1. Getting Started (Prerequisites, Installing)
